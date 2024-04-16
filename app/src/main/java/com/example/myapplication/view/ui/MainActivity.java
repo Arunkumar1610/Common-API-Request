@@ -10,6 +10,9 @@ import com.example.myapplication.R;
 import com.example.myapplication.controller.VolleyController;
 import com.example.myapplication.view.VolleyView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity implements VolleyView.ResponseListener{
     private VolleyController mController;
     @Override
@@ -18,8 +21,14 @@ public class MainActivity extends AppCompatActivity implements VolleyView.Respon
         setContentView(R.layout.activity_main);
 
         mController = new VolleyController(new VolleyView());
-        String url = "https://nexsan.one/api/history_status?status_param=success";
+        String url = "get url";
         mController.performGetRequest(this, url, this);
+
+        String postUrl = "post_url";
+        Map<String, String> postParams = new HashMap<>();
+        postParams.put("param1", "value1");
+        postParams.put("param2", "value2");
+        mController.performPostRequest(this, postUrl, postParams, this);
     }
 
     @Override
